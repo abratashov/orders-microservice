@@ -10,8 +10,14 @@ get '/list' do
   Order.all.to_json
 end
 
-post '/create' do
-  params = JSON.parse request.body.read
+get '/create' do
+  # params = JSON.parse request.body.read
+  params = {
+    product_name: 'product_name',
+    owner: 'owner',
+    address: 'address',
+    quantity: 10
+  }
   order = Order.new(params)
   if order.save
     # push message to shipping service
